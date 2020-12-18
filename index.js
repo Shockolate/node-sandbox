@@ -1036,5 +1036,13 @@ async function main() {
   console.log(`Failing ${failingPasswords}`);
 }
 
+module.exports = application;
 
-main().catch(console.error);
+if (require.main === module) {
+	// Run the application
+	application.main().catch((err) => {
+		// eslint-disable-next-line no-console
+		console.error('Cannot start the application.', err);
+		process.exit(1);
+	});
+}
