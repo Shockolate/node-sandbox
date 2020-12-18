@@ -4,9 +4,41 @@ import { text } from './input';
 const instructionRegex = /(nop|acc|jmp) (\+|\-)(\d+)/;
 
 export async function main() {
-  const lines = text.split('\n');
-  const result = checkIfTerminates(lines);
-  console.log(result);
+  const originalLines = text.split('\n');
+  const nopLines: number[] = [];
+  const jmpLines: number[] = [];
+  for (let i = 0; i < originalLines.length; i++) {
+    const instruction = originalLines[i].substring(0, 3);
+    if (instruction === 'nop') {
+      nopLines.push(i);
+    } else if (instruction === 'jmp') {
+      jmpLines.push(i);
+    }
+  }
+
+  console.log(`Num nop ${nopLines.length}`);
+  console.log(`Num jmp ${jmpLines.length}`);
+
+  for (const nopLine of nopLines) {
+    const testLines = [...originalLines];
+    testLines[nopLine] = testLines[nopLine].replace('nop', 'jmp');
+    if (checkIfTerminates(testLines)) {
+      console.log('Success!');
+      return;
+    }
+  }
+
+  for (const jmpLine of jmpLines) {
+    const testLines = [...originalLines];
+    testLines[jmpLine] = testLines[jmpLine].replace('jmp', 'nop');
+    if (checkIfTerminates(testLines)) {
+      console.log('Success!');
+      return;
+    }
+  }
+
+  // const result = checkIfTerminates(lines);
+  // console.log(result);
 }
 
 function checkIfTerminates(lines: string[]) {
