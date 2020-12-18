@@ -4,12 +4,30 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc -b",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prestart": "npm run build",
+    "start": "node ."
   },
   "author": "me",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
+    "lodash": "^4.17.20",
     "uuid": "^8.1.0"
+  },
+  "files": [
+    "README.md",
+    "index.js",
+    "index.d.ts",
+    "dist*/src",
+    "dist*/index*",
+    "src"
+  ],
+  "devDependencies": {
+    "@types/lodash": "^4.14.165",
+    "@types/node": "14.14.12",
+    "source-map-support": "^0.5.19",
+    "typescript": "^4.1.2"
   }
 }
