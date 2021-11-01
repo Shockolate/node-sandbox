@@ -1,0 +1,4 @@
+migrations/
+coverage/
+dist*/
+*.d.ts
