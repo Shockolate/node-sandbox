@@ -22,7 +22,8 @@
     "strict": true,
     "target": "es2018",
     "types": [
-      "node"
+      "node",
+      "mocha"
     ],
     "lib": [
       "es2020",
