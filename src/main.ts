@@ -5,5 +5,5 @@
 // import { v4 as uuidv4 } from 'uuid';
 
 export async function main(): Promise<void> {
-	console.log('Hello world');
+	console.log('Hello World!');
 }
